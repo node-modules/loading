@@ -1,6 +1,6 @@
 {
   "name": "loading",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "loading dir files as module to an object",
   "main": "index.js",
   "scripts": {
