@@ -26,14 +26,6 @@ test-cov cov:
 		$(MOCHA_OPTS) \
 		$(TESTS)
 	@./node_modules/.bin/cov coverage
-	@-$(MAKE) check-coverage
-
-check-coverage:
-	@./node_modules/.bin/istanbul check-coverage \
-		--statements 100 \
-		--functions 100 \
-		--branches 100 \
-		--lines 100
 
 test-all: install jshint test cov
 
