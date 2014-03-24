@@ -24,7 +24,7 @@ describe('loading.test.js', function () {
     var app = {};
     loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
     app.should.have.property('services');
-    app.services.should.have.keys('foo', 'uesrProfile');
+    app.services.should.have.keys('foo', 'userProfile');
 
     done = pedding(2, done);
     app.services.foo.get(function (err, v) {
@@ -37,5 +37,17 @@ describe('loading.test.js', function () {
       user.should.eql({name: 'mk2'});
       done();
     });
+  });
+
+  it('should load controllers to app', function () {
+    var app = {
+      controllers: {
+        test: function () {},
+      }
+    };
+    loading(path.join(__dirname, 'fixtures', 'controllers')).into(app, 'controllers');
+    app.should.have.property('controllers');
+    app.controllers.should.have.keys('home', 'test');
+    app.controllers.home.should.have.keys('index');
   });
 });

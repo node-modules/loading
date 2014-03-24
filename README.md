@@ -22,6 +22,7 @@ var loading = require('loading');
 
 // app.services.foo
 loading('./test/fixtures/services').into(app, 'services');
+console.log(app.services);
 ```
 
 ## License

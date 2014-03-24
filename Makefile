@@ -6,10 +6,10 @@ MOCHA_OPTS =
 install:
 	@npm install --registry=http://r.cnpmjs.org --disturl=http://dist.cnpmjs.org
 
-jshint:
+jshint: install
 	@./node_modules/.bin/jshint .
 
-test:
+test: install
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--harmony \
 		--reporter $(REPORTER) \
@@ -27,13 +27,13 @@ test-cov cov:
 		$(TESTS)
 	@./node_modules/.bin/cov coverage
 
-test-all: install jshint test cov
+test-all: jshint test cov
 
 autod: install
 	@./node_modules/.bin/autod -w
 	@$(MAKE) install
 
-contributors:
+contributors: install
 	@./node_modules/.bin/contributors -f plain -o AUTHORS
 
 .PHONY: test
