@@ -20,9 +20,16 @@ var path = require('path');
 var loading = require('../');
 
 describe('loading.test.js', function () {
+  var app = {
+    controllers: {
+      test: function () {},
+    }
+  };
+  loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
+  loading(path.join(__dirname, 'fixtures', 'models')).into(app, 'models');
+  loading(path.join(__dirname, 'fixtures', 'controllers')).into(app, 'controllers');
+
   it('should auto load services to app', function (done) {
-    var app = {};
-    loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
     app.should.have.property('services');
     app.services.should.have.keys('foo', 'userProfile');
 
@@ -39,15 +46,15 @@ describe('loading.test.js', function () {
     });
   });
 
-  it('should load controllers to app', function () {
-    var app = {
-      controllers: {
-        test: function () {},
-      }
-    };
-    loading(path.join(__dirname, 'fixtures', 'controllers')).into(app, 'controllers');
-    app.should.have.property('controllers');
+  it('should load controllers to app', function (done) {
     app.controllers.should.have.keys('home', 'test');
     app.controllers.home.should.have.keys('index');
+
+    app.controllers.home.index({query: {uid: 'mk2'}}, {
+      end: function (body) {
+        body.should.equal('hello mk2');
+        done();
+      }
+    });
   });
 });
