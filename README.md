@@ -1,11 +1,12 @@
 loading
 =======
 
-[![Build Status](https://secure.travis-ci.org/fengmk2/loading.png)](http://travis-ci.org/fengmk2/loading) [![Dependency Status](https://gemnasium.com/fengmk2/loading.png)](https://gemnasium.com/fengmk2/loading)
+[![Build Status](https://secure.travis-ci.org/node-modules/loading.png)](http://travis-ci.org/node-modules/loading)
+[![Dependency Status](https://gemnasium.com/node-modules/loading.png)](https://gemnasium.com/node-modules/loading)
 
 [![NPM](https://nodei.co/npm/loading.png?downloads=true&stars=true)](https://nodei.co/npm/loading/)
 
-![logo](https://raw.github.com/fengmk2/loading/master/logo.png)
+![logo](https://raw.github.com/node-modules/loading/master/logo.png)
 
 loading dir files as module to an object.
 

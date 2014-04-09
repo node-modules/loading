@@ -31,7 +31,7 @@ describe('loading.test.js', function () {
 
   it('should auto load services to app', function (done) {
     app.should.have.property('services');
-    app.services.should.have.keys('foo', 'userProfile');
+    app.services.should.have.keys('foo', 'userProfile', 'fooBarHello', 'fooService');
 
     done = pedding(2, done);
     app.services.foo.get(function (err, v) {

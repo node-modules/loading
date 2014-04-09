@@ -12,7 +12,7 @@
     }
   },
   "dependencies": {
-    "debug": "0.7.4"
+    "debug": "0.8.0"
   },
   "devDependencies": {
     "autod": "*",
@@ -22,16 +22,16 @@
     "jshint": "*",
     "mocha": "*",
     "pedding": "0.0.3",
-    "should": "3.2.0-beta1"
+    "should": "3.3.0"
   },
-  "homepage": "https://github.com/fengmk2/loading",
+  "homepage": "https://github.com/node-modules/loading",
   "repository": {
     "type": "git",
-    "url": "git://github.com/fengmk2/loading.git",
-    "web": "https://github.com/fengmk2/loading"
+    "url": "git://github.com/node-modules/loading.git",
+    "web": "https://github.com/node-modules/loading"
   },
   "bugs": {
-    "url": "https://github.com/fengmk2/loading/issues",
+    "url": "https://github.com/node-modules/loading/issues",
     "email": "fengmk2@gmail.com"
   },
   "keywords": [
