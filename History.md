@@ -1,4 +1,9 @@
 
+0.1.0 / 2014-04-15
+==================
+
+ * later require, must do require action in into() method
+
 0.0.4 / 2014-04-09
 ==================
 
