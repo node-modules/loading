@@ -29,7 +29,7 @@ var loading = require('loading');
 
 var app = {};
 // app.services.foo
-loading('/services').into(app, 'services');
+loading('/services').concat('/overwrite_services').into(app, 'services');
 loading('/models').into(app, 'models');
 loading('/controllers').into(app, 'controllers');
 console.log(app);

@@ -25,7 +25,9 @@ describe('loading.test.js', function () {
       test: function () {},
     }
   };
-  loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
+  loading(path.join(__dirname, 'fixtures', 'services'))
+    .concat(path.join(__dirname, 'fixtures', 'overwrite_services'))
+    .into(app, 'services');
   loading(path.join(__dirname, 'fixtures', 'models')).into(app, 'models');
   loading(path.join(__dirname, 'fixtures', 'controllers')).into(app, 'controllers');
 
@@ -36,7 +38,7 @@ describe('loading.test.js', function () {
     done = pedding(2, done);
     app.services.foo.get(function (err, v) {
       should.not.exist(err);
-      v.should.equal('bar');
+      v.should.equal('overwrite bar');
       done();
     });
     app.services.userProfile.getByName('mk2', function (err, user) {
@@ -48,7 +50,7 @@ describe('loading.test.js', function () {
 
   it('should load controllers to app', function (done) {
     app.controllers.should.have.keys('home', 'test');
-    app.controllers.home.should.have.keys('index');
+    app.controllers.home.should.have.keys('index', 'init', '__loadingInited');
 
     app.controllers.home.index({query: {uid: 'mk2'}}, {
       end: function (body) {

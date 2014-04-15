@@ -16,8 +16,6 @@
 
 exports.get = function (callback) {
   setTimeout(function () {
-    callback(null, 'bar');
+    callback(null, 'overwrite bar');
   }, 1);
 };
-
-throw new Error('should not be require');
