@@ -77,12 +77,13 @@ describe('loading.test.js', function () {
       config.should.equal('controllers/home.js:exports.extra');
     });
 
-    app.controllers.extraWithExtra.a.should.have.keys('index');
+    app.controllers.extraWithExtra.a.should.have.keys('index', 'aa');
     app.controllers.extraWithExtra.a.index.should.have.keys('test');
     app.controllers.extraWithExtra.a.index.test(function (path, config) {
       path.should.equal('controllers/extraWithExtra/a/index.js');
       config.should.equal('controllers/extraWithExtra/index.js:exports.extra');
     });
+    app.controllers.extraWithExtra.a.aa.afn.should.be.a.Function;
 
     app.controllers.extraWithExtra.b.should.have.keys('index');
     app.controllers.extraWithExtra.b.index.should.have.keys('test');
