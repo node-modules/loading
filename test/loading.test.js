@@ -49,14 +49,42 @@ describe('loading.test.js', function () {
   });
 
   it('should load controllers to app', function (done) {
-    app.controllers.should.have.keys('home', 'test');
-    app.controllers.home.should.have.keys('index', 'init', '__loadingInited');
-
+    app.controllers.should.have.keys('home', 'test', 'extra', 'extraWithExtra');
+    app.controllers.should.not.have.keys('notAnExtra');
+    app.controllers.home.should.have.keys('index', 'init', '__loadingInited', 'extra');
     app.controllers.home.index({query: {uid: 'mk2'}}, {
       end: function (body) {
         body.should.equal('hello mk2');
         done();
       }
+    });
+
+    app.controllers.extra.should.have.keys('index');
+    app.controllers.extra.index.should.have.keys('test');
+    app.controllers.extra.index.test(function (path, config) {
+      path.should.equal('controllers/extra/index.js');
+      config.should.equal('controllers/home.js:exports.extra');
+    });
+
+    app.controllers.extraWithExtra.should.have.keys('index', 'a', 'b');
+    app.controllers.extraWithExtra.index.should.have.keys('test', 'extra');
+    app.controllers.extraWithExtra.index.test(function (path, config) {
+      path.should.equal('controllers/extraWithExtra/index.js');
+      config.should.equal('controllers/home.js:exports.extra');
+    });
+
+    app.controllers.extraWithExtra.a.should.have.keys('index');
+    app.controllers.extraWithExtra.a.index.should.have.keys('test');
+    app.controllers.extraWithExtra.a.index.test(function (path, config) {
+      path.should.equal('controllers/extraWithExtra/a/index.js');
+      config.should.equal('controllers/extraWithExtra/index.js:exports.extra');
+    });
+
+    app.controllers.extraWithExtra.b.should.have.keys('index');
+    app.controllers.extraWithExtra.b.index.should.have.keys('test');
+    app.controllers.extraWithExtra.b.index.test(function (path, config) {
+      path.should.equal('controllers/extraWithExtra/b/index.js');
+      config.should.equal('controllers/extraWithExtra/index.js:exports.extra');
     });
   });
 });

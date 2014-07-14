@@ -27,3 +27,5 @@ exports.index = function (req, res, next) {
     res.end('hello ' + user.name);
   });
 };
+
+exports.extra = ['extra', 'extraWithExtra'];
