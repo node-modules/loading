@@ -25,7 +25,7 @@ test-cov cov:
 		--timeout $(TIMEOUT) \
 		$(MOCHA_OPTS) \
 		$(TESTS)
-	@./node_modules/.bin/cov coverage
+	@-./node_modules/.bin/cov coverage
 
 test-all: jshint test cov
 
