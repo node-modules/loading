@@ -19,6 +19,7 @@ $ npm install loading
 ## Module loading init rules
 
 * `exports.init(app)` initialization function
+* `exports.extra = []` load extra, must be an array
 * `module.exports = function (app)` module as initialization function
 * no initialization function
 
@@ -73,6 +74,8 @@ exports.index = function (req, res, next) {
     res.end('hello ' + user.name);
   });
 };
+
+exports.extra = ['extra', 'extraWithExtra'];
 ```
 
 ## License
