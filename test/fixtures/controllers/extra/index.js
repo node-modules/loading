@@ -13,3 +13,7 @@
 exports.test = function (loadedBy) {
   loadedBy('controllers/extra/index.js', 'controllers/home.js:exports.extra');
 };
+
+exports.init = function (app) {
+  exports.app = app;
+};

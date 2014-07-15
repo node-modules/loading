@@ -16,3 +16,7 @@ exports.test = function (loadedBy) {
     'controllers/extraWithExtra/index.js:exports.extra'
   );
 };
+
+exports.init = function (app) {
+  exports.app = app;
+};

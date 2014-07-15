@@ -10,7 +10,7 @@
 
 'use strict';
 
-exports.extra = ['a', 'b'];
+exports.extra = ['a', 'b', 'b'];
 exports.test = function (loadedBy) {
   loadedBy(
     'controllers/extraWithExtra/index.js',

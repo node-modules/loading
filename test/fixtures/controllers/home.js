@@ -14,9 +14,12 @@
  * Module dependencies.
  */
 
+exports.initTimes = 0;
+
 var models;
 exports.init = function (app) {
   models = app.models;
+  exports.initTimes++;
 };
 
 exports.index = function (req, res, next) {

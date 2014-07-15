@@ -25,12 +25,12 @@ test-cov cov:
 		--timeout $(TIMEOUT) \
 		$(MOCHA_OPTS) \
 		$(TESTS)
-	@./node_modules/.bin/cov coverage
+	@-./node_modules/.bin/cov coverage
 
 test-all: jshint test cov
 
 autod: install
-	@./node_modules/.bin/autod -w
+	@./node_modules/.bin/autod -w --prefix "~"
 	@$(MAKE) install
 
 contributors: install
