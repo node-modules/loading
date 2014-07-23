@@ -1,10 +1,22 @@
 loading
 =======
 
-[![Build Status](https://secure.travis-ci.org/node-modules/loading.png)](http://travis-ci.org/node-modules/loading)
-[![Dependency Status](https://gemnasium.com/node-modules/loading.png)](https://gemnasium.com/node-modules/loading)
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Gittip][gittip-image]][gittip-url]
+[![David][david-image]][david-url]
 
-[![NPM](https://nodei.co/npm/loading.png?downloads=true&stars=true)](https://nodei.co/npm/loading/)
+[npm-image]: https://img.shields.io/npm/v/loading.svg?style=flat
+[npm-url]: https://npmjs.org/package/loading
+[travis-image]: https://img.shields.io/travis/node-modules/loading.svg?style=flat
+[travis-url]: https://travis-ci.org/node-modules/loading
+[coveralls-image]: https://img.shields.io/coveralls/node-modules/loading.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/node-modules/loading?branch=master
+[gittip-image]: https://img.shields.io/gittip/fengmk2.svg?style=flat
+[gittip-url]: https://www.gittip.com/fengmk2/
+[david-image]: https://img.shields.io/david/node-modules/loading.svg?style=flat
+[david-url]: https://david-dm.org/node-modules/loading
 
 ![logo](https://raw.github.com/node-modules/loading/master/logo.png)
 
