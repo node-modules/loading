@@ -1,4 +1,10 @@
 
+0.3.0 / 2014-07-23
+==================
+
+ * add travis coverage
+ * Pass the original target to extra
+
 0.2.0 / 2014-07-14
 ==================
 
