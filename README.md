@@ -75,6 +75,7 @@ exports.index = function (req, res, next) {
   });
 };
 
+// will auto load '/controllers/extra' and '/controllers/extraWithExtra'
 exports.extra = ['extra', 'extraWithExtra'];
 ```
 
