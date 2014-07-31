@@ -28,13 +28,6 @@ loading dir files as module to an object.
 $ npm install loading
 ```
 
-## Module loading init rules
-
-* `exports.init(app)` initialization function
-* `exports.extra = []` load extra modules, must be an array
-* `module.exports = function (app)` module as initialization function
-* no initialization function
-
 ## Usage
 
 ```js
@@ -53,42 +46,6 @@ exports.get = function (callback) {
     callback(null, 'bar');
   }, 1);
 };
-
-// /services/userProfile.js
-module.exports = function (app) {
-  return {
-    getByName: function (name, callback) {
-      setTimeout(function () {
-        callback(null, {name: name});
-      }, 1);
-    }
-  };
-};
-
-// /models/user.js
-var services;
-exports.init = function (app) {
-  services = app.services;
-}
-
-exports.getProfile = function (userId, callback) {
-  services.userProfile.getByName(userId, callback);
-};
-
-// /controllers/home.js
-var models;
-exports.init = function (app) {
-  models = app.models;
-}
-
-exports.index = function (req, res, next) {
-  models.user.getProfile(req.query.uid, function (err, user) {
-    res.end('hello ' + user.name);
-  });
-};
-
-// will auto load '/controllers/extra' and '/controllers/extraWithExtra'
-exports.extra = ['extra', 'extraWithExtra'];
 ```
 
 ## License

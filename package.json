@@ -12,7 +12,8 @@
     }
   },
   "dependencies": {
-    "debug": "~1.0.4"
+    "debug": "~1.0.4",
+    "glob": "~4.0.5"
   },
   "devDependencies": {
     "autod": "*",
