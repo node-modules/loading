@@ -28,6 +28,10 @@ loading dir files as module to an object.
 $ npm install loading
 ```
 
+## Module loading init rules
+
+-* `module.exports = function (app)` module as initialization function
+
 ## Usage
 
 ```js
@@ -47,6 +51,17 @@ exports.get = function (callback) {
   }, 1);
 };
 ```
+
+// /services/userProfile.js
+module.exports = function (app) {
+  return {
+    getByName: function (name, callback) {
+      setTimeout(function () {
+        callback(null, {name: name});
+      }, 1);
+    }
+  };
+};
 
 ## License
 

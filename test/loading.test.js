@@ -27,6 +27,7 @@ describe('loading.test.js', function () {
 
     app.should.have.property('services');
     app.services.should.have.keys('dir', 'foo', 'fooBarHello', 'fooService', 'hyphenDir', 'underscoreDir', 'userProfile');
+    app.services.fooService.should.have.keys('a');
 
     done = pedding(2, done);
     app.services.foo.get(function (err, v) {
@@ -39,6 +40,7 @@ describe('loading.test.js', function () {
       user.should.eql({name: 'mk2'});
       done();
     });
+
   });
 
   it('should not overwrite property', function() {
