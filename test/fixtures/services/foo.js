@@ -19,5 +19,3 @@ exports.get = function (callback) {
     callback(null, 'bar');
   }, 1);
 };
-
-throw new Error('should not be require');
