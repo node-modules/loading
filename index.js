@@ -7,6 +7,7 @@
  * Authors:
  *   fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)
  *   Janus-Z <Janus.zheng@gmail.com> (https://github.com/janus-z)
+ *   popomore <sakura9515@gmail.com>
  */
 
 'use strict';
