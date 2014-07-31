@@ -1,4 +1,10 @@
 
+1.0.0 / 2014-07-31
+==================
+
+ * move lib/loading.js > index.js
+ * simplify implementation #5
+
 0.3.0 / 2014-07-23
 ==================
 
