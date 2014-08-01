@@ -48,7 +48,7 @@ proto._load = function (target, field) {
     var properties = item.properties;
     var mod = require(fullpath);
 
-    inject(target[field], properties, mod);
+    inject(target[field], properties, mod, target);
     debug('loading #%d:%s into %s', index++, properties.join('.'), field);
   });
 };
