@@ -1,4 +1,9 @@
 
+1.1.0 / 2014-08-01
+==================
+
+ * `module.exports = function (app)` module as initialization function
+
 1.0.0 / 2014-07-31
 ==================
 
