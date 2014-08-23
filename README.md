@@ -6,6 +6,8 @@ loading
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Gittip][gittip-image]][gittip-url]
 [![David][david-image]][david-url]
+[![node version][node-image]][node-url]
+[![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/loading.svg?style=flat
 [npm-url]: https://npmjs.org/package/loading
@@ -17,6 +19,11 @@ loading
 [gittip-url]: https://www.gittip.com/fengmk2/
 [david-image]: https://img.shields.io/david/node-modules/loading.svg?style=flat
 [david-url]: https://david-dm.org/node-modules/loading
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
+[download-image]: https://img.shields.io/npm/dm/loading.svg?style=flat-square
+[download-url]: https://npmjs.org/package/loading
+
 
 ![logo](https://raw.github.com/node-modules/loading/master/logo.png)
 
