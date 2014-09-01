@@ -66,4 +66,11 @@ describe('loading.test.js', function () {
   it('should just return when no target', function() {
     loading(path.join(__dirname, 'fixtures', 'services')).into();
   });
+
+  it('should loading without call function', function() {
+    var app = {};
+    loading(path.join(__dirname, 'fixtures', 'services'), {call: false})
+      .into(app, 'services');
+    app.services.fooService().should.eql({a: 1});
+  });
 });

@@ -20,10 +20,13 @@ var debug = require('debug')('loading');
 var getMods = require('./lib/mods');
 var inject = require('./lib/inject');
 
-function Loader(dirpath) {
+function Loader(dirpath, opt) {
   if (!(this instanceof Loader)) {
-    return new Loader(dirpath);
+    return new Loader(dirpath, opt);
   }
+  this.opt = opt || {};
+  // whether call the function when module.exports is a function, default: true
+  this.opt.call = this.opt.call !== false;
   this._mods = [];
   this.concat(dirpath);
 }
@@ -32,6 +35,7 @@ var proto = Loader.prototype;
 
 proto._load = function (target, field) {
   var mods = this._mods;
+  var isCall = this.opt.call;
   var self = this;
 
   if (!target) {
@@ -48,7 +52,7 @@ proto._load = function (target, field) {
     var properties = item.properties;
     var mod = require(fullpath);
 
-    inject(target[field], properties, mod, target);
+    inject(target[field], properties, mod, target, isCall);
     debug('loading #%d:%s into %s', index++, properties.join('.'), field);
   });
 };
