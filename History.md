@@ -1,4 +1,9 @@
 
+1.3.0 / 2014-09-01
+==================
+
+ * set call option whether call the function when module.exports is a function
+
 1.2.0 / 2014-08-23
 ==================
 
