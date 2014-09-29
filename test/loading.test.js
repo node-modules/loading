@@ -41,6 +41,9 @@ describe('loading.test.js', function () {
       done();
     });
 
+    app.services.dir.service.should.have.keys('load', 'app');
+    app.services.dir.service.load.should.equal(true);
+    app.services.dir.service.app.should.equal(app);
   });
 
   it('should not overwrite property', function() {

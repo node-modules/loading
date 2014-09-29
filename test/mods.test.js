@@ -14,6 +14,9 @@ describe('mods.test.js', function() {
       fullpath: dir + '/dir/abc.js',
       properties: ['dir', 'abc']
     }, {
+      fullpath: dir + '/dir/service.js',
+      properties: ['dir', 'service']
+    }, {
       fullpath: dir + '/foo.js',
       properties: ['foo']
     }, {
