@@ -57,7 +57,6 @@ exports.get = function (callback) {
     callback(null, 'bar');
   }, 1);
 };
-```
 
 // /services/userProfile.js
 module.exports = function (app) {
@@ -69,6 +68,7 @@ module.exports = function (app) {
     }
   };
 };
+```
 
 ## License
 
