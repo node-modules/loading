@@ -33,7 +33,8 @@ function Loader(dirpath, opt) {
 
 var proto = Loader.prototype;
 
-proto._load = function (target, field) {
+proto._load = function (target, field, options) {
+  var filters = options && options.filters;
   var mods = this._mods;
   var isCall = this.opt.call;
   var self = this;
@@ -48,12 +49,16 @@ proto._load = function (target, field) {
 
   var map = {};
   mods.forEach(function (item, index) {
-    var fullpath = item.fullpath;
     var properties = item.properties;
-    var mod = require(fullpath);
+    if (filters && filters.length > 0 && filters.indexOf(properties[0]) === -1) {
+      // only require matched item
+      return;
+    }
 
+    var names = properties.join('.');
+    var mod = require(item.fullpath);
     inject(target[field], properties, mod, target, isCall);
-    debug('loading #%d:%s into %s', index++, properties.join('.'), field);
+    debug('loading #%d:%s into %s', index++, names, field);
   });
 };
 
@@ -64,8 +69,8 @@ proto.concat = function (dirpath) {
 };
 
 // load `field` into `target`
-proto.into = function (target, field) {
-  this._load(target, field);
+proto.into = function (target, field, options) {
+  this._load(target, field, options);
   return target;
 };
 

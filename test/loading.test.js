@@ -20,7 +20,6 @@ var path = require('path');
 var loading = require('../');
 
 describe('loading.test.js', function () {
-
   it('should auto load services to app', function (done) {
     var app = {};
     loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
@@ -75,5 +74,20 @@ describe('loading.test.js', function () {
     loading(path.join(__dirname, 'fixtures', 'services'), {call: false})
       .into(app, 'services');
     app.services.fooService().should.eql({a: 1});
+  });
+
+  describe('into() with options.filters', function () {
+    it('should only load property match the filers', function () {
+      var app = {};
+      var fixtures = path.join(__dirname, 'fixtures', 'middlewares');
+      var defaultMiddlewares = path.join(fixtures, 'default');
+      var appMiddlewares = path.join(fixtures, 'app');
+      var loads = loading(defaultMiddlewares, {call: false});
+      loads.concat(appMiddlewares);
+      loads.into(app, 'middlewares', {
+        filters: ['m1', 'm2', 'dm1', 'dm2']
+      });
+      app.middlewares.should.have.keys('m1', 'm2', 'dm1', 'dm2');
+    });
   });
 });
