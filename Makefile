@@ -25,7 +25,6 @@ test-cov cov:
 		--timeout $(TIMEOUT) \
 		$(MOCHA_OPTS) \
 		$(TESTS)
-	@-./node_modules/.bin/cov coverage
 
 test-travis: install
 	@NODE_ENV=test node --harmony \
@@ -37,8 +36,6 @@ test-travis: install
 		--timeout $(TIMEOUT) \
 		$(MOCHA_OPTS) \
 		$(TESTS)
-
-test-all: jshint test cov
 
 autod: install
 	@./node_modules/.bin/autod -w --prefix "~"
