@@ -37,7 +37,9 @@ $ npm install loading
 
 ## Module loading init rules
 
--* `module.exports = function (app)` module as initialization function
+- `module.exports = function (app)` module as initialization function
+
+- map `Pascal Case` modules -> `Lower Camel Case` such as `raw_modules` -> `rawModules`
 
 ## Usage
 
@@ -69,6 +71,19 @@ module.exports = function (app) {
   };
 };
 ```
+
+## Options
+
+```
+var loading = require('loading');
+
+loading(PATH,[{call:true}]).into(TARGET, FIELD, [filters])
+```
+- **call** type:[`object`]
+  decide whether auto call the function when module.exports is a function, default: true .
+
+- **filters** type:[`string array`]
+  only inject the item in `filters` .
 
 ## License
 
