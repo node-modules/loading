@@ -29,6 +29,9 @@ describe('mods.test.js', function() {
       fullpath: dir + '/hyphen-dir/a.js',
       properties: ['hyphenDir', 'a']
     }, {
+      fullpath: dir + '/null.js',
+      properties: ['null']
+    }, {
       fullpath: dir + '/underscore_dir/a.js',
       properties: ['underscoreDir', 'a']
     }, {
