@@ -1,4 +1,9 @@
 
+1.5.0 / 2015-04-26
+==================
+
+ * deps: upgrade debug to the latest
+
 1.4.1 / 2014-12-14
 ==================
 
@@ -61,12 +66,12 @@
 
  * only accept alphabet start js file. fixed #1
 
-0.0.2 / 2014-03-25 
+0.0.2 / 2014-03-25
 ==================
 
   * add initialization function support
 
-0.0.1 / 2014-03-24 
+0.0.1 / 2014-03-24
 ==================
 
   * improve coverage
