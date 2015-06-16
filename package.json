@@ -20,6 +20,10 @@
     "pedding": "~1.0.0",
     "should": "~4.0.4"
   },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "homepage": "https://github.com/node-modules/loading",
   "repository": {
     "type": "git",
