@@ -85,6 +85,10 @@ loading(PATH,[{call:true}]).into(TARGET, FIELD, [filters])
 - **filters** type:[`string array`]
   only inject the item in `filters` .
 
+- **override** type:[`boolean`]
+  decide whether override the property that is already exist,
+  default: false
+
 ## License
 
 MIT

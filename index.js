@@ -27,6 +27,7 @@ function Loader(dirpath, opt) {
   this.opt = opt || {};
   // whether call the function when module.exports is a function, default: true
   this.opt.call = this.opt.call !== false;
+  this.opt.override = this.opt.override === true;
   this._mods = [];
   this.concat(dirpath);
 }
@@ -37,6 +38,7 @@ proto._load = function (target, field, options) {
   var filters = options && options.filters;
   var mods = this._mods;
   var isCall = this.opt.call;
+  var isOverride = this.opt.override;
   var self = this;
 
   if (!target) {
@@ -57,7 +59,7 @@ proto._load = function (target, field, options) {
 
     var names = properties.join('.');
     var mod = require(item.fullpath);
-    inject(target[field], properties, mod, target, isCall);
+    inject(target[field], properties, mod, target, isCall, isOverride);
     debug('loading #%d:%s into %s', index++, names, field);
   });
 };

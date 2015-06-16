@@ -6,9 +6,10 @@
  *
  * Authors:
  *   fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)
+ *   popomore <sakura9515@gmail.com>
  */
 
-"use strict";
+'use strict';
 
 /**
  * Module dependencies.
@@ -63,6 +64,13 @@ describe('loading.test.js', function () {
         .concat(path.join(__dirname, 'fixtures', 'overwrite_services'))
         .into(app, 'services');
     }).should.throw('can\'t overwrite property foo');
+  });
+
+  it('should overwrite property from loading', function() {
+    var app = {};
+    loading(path.join(__dirname, 'fixtures', 'services'), {override: true})
+      .concat(path.join(__dirname, 'fixtures', 'overwrite_services'))
+      .into(app, 'services');
   });
 
   it('should just return when no target', function() {
