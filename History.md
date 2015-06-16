@@ -1,4 +1,10 @@
 
+1.6.0 / 2015-06-16
+==================
+
+  * chore: use pkg.files instead
+  * feat: Add an option to override the property that is already exist
+
 1.5.0 / 2015-04-26
 ==================
 
