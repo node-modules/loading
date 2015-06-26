@@ -89,6 +89,9 @@ loading(PATH,[{call:true}]).into(TARGET, FIELD, [filters])
   decide whether override the property that is already exist,
   default: false
 
+- **ignore** type:[`string function`]
+  ignore file. If ignore is not null, ignore rule will be glob string `!ignore`.
+  default: undefined
 ## License
 
 MIT

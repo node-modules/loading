@@ -98,4 +98,12 @@ describe('loading.test.js', function () {
       app.middlewares.should.have.keys('m1', 'm2', 'dm1', 'dm2');
     });
   });
+
+  it('should ignore support', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/ignore');
+    loading(fixtures, { ignore: 'util/**' }).into(app, 'services');
+    app.services.should.have.property('a', { a: 1 });
+  });
+
 });

@@ -65,7 +65,7 @@ proto._load = function (target, field, options) {
 };
 
 proto.concat = function (dirpath) {
-  this._mods = this._mods.concat(getMods(dirpath));
+  this._mods = this._mods.concat(getMods(dirpath, this.opt.ignore));
   debug('total %d', this._mods.length);
   return this;
 };
