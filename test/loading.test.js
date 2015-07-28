@@ -73,6 +73,14 @@ describe('loading.test.js', function () {
       .into(app, 'services');
   });
 
+  it('should overwrite property from loading using array', function() {
+    var app = {};
+    loading([
+      path.join(__dirname, 'fixtures', 'services'),
+      path.join(__dirname, 'fixtures', 'overwrite_services')
+    ], {override: true}).into(app, 'services');
+  });
+
   it('should just return when no target', function() {
     loading(path.join(__dirname, 'fixtures', 'services')).into();
   });
