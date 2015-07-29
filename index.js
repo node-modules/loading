@@ -29,7 +29,14 @@ function Loader(dirpath, opt) {
   this.opt.call = this.opt.call !== false;
   this.opt.override = this.opt.override === true;
   this._mods = [];
-  this.concat(dirpath);
+
+  if (Array.isArray(dirpath)) {
+    for (var i = 0, l = dirpath.length; i < l; i++) {
+      this.concat(dirpath[i]);
+    }
+  } else {
+    this.concat(dirpath);
+  }
 }
 
 var proto = Loader.prototype;
@@ -39,7 +46,6 @@ proto._load = function (target, field, options) {
   var mods = this._mods;
   var isCall = this.opt.call;
   var isOverride = this.opt.override;
-  var self = this;
 
   if (!target) {
     return;
@@ -49,7 +55,6 @@ proto._load = function (target, field, options) {
     target[field] = {};
   }
 
-  var map = {};
   mods.forEach(function (item, index) {
     var properties = item.properties;
     if (filters && filters.length > 0 && filters.indexOf(properties[0]) === -1) {
