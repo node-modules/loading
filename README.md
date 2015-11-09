@@ -41,6 +41,8 @@ $ npm install loading
 
 - map `Pascal Case` modules -> `Lower Camel Case` such as `raw_modules` -> `rawModules`
 
+- if `opt.lowercaseFirst = true` then map `SomeDir.SomeClass` -> `someDir.someClass`
+
 ## Usage
 
 ```js
@@ -92,6 +94,10 @@ loading(PATH,[{call:true}]).into(TARGET, FIELD, [filters])
 - **ignore** type:[`string function`]
   ignore file. If ignore is not null, ignore rule will be glob string `!ignore`.
   default: undefined
+  
+- **lowercaseFirst** type:[`boolean`]
+  decide whether lowercase the first letter of property
+  default: false
 ## License
 
 MIT

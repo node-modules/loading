@@ -28,6 +28,7 @@ function Loader(dirpath, opt) {
   // whether call the function when module.exports is a function, default: true
   this.opt.call = this.opt.call !== false;
   this.opt.override = this.opt.override === true;
+  this.opt.lowercaseFirst = this.opt.lowercaseFirst === true;
   this._mods = [];
 
   if (Array.isArray(dirpath)) {
@@ -70,7 +71,7 @@ proto._load = function (target, field, options) {
 };
 
 proto.concat = function (dirpath) {
-  this._mods = this._mods.concat(getMods(dirpath, this.opt.ignore));
+  this._mods = this._mods.concat(getMods(dirpath, this.opt));
   debug('total %d', this._mods.length);
   return this;
 };

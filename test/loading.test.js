@@ -107,11 +107,19 @@ describe('loading.test.js', function () {
     });
   });
 
-  it('should ignore support', function() {
+  it('should support ignore', function() {
     var app = {};
     var fixtures = path.join(__dirname, './fixtures/ignore');
     loading(fixtures, { ignore: 'util/**' }).into(app, 'services');
     app.services.should.have.property('a', { a: 1 });
+  });
+
+  it('should support lowercase first letter', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/lowercase');
+    loading(fixtures, { lowercaseFirst: true }).into(app, 'services');
+    app.services.should.have.properties('someClass', 'someDir');
+    app.services.someDir.should.have.property('someSubClass');
   });
 
 });
