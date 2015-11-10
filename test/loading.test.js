@@ -92,6 +92,28 @@ describe('loading.test.js', function () {
     app.services.fooService().should.eql({a: 1});
   });
 
+  it('should loading without call es6 class', function() {
+    if (!supportEs6Class()) {
+      return;
+    }
+    var app = {};
+    loading(path.join(__dirname, 'fixtures', 'class'), {call: true})
+      .into(app, 'proxyClasses');
+    (function() {
+      app.proxyClasses.UserProxy();
+    }).should.throw('Class constructors cannot be invoked without \'new\'');
+    var instance = new app.proxyClasses.UserProxy();
+    instance.getUser().should.eql({ name: 'xiaochen.gaoxc' });
+  });
+
+  it('should loading without call babel class', function() {
+    var app = {};
+    loading(path.join(__dirname, 'fixtures', 'babel'), {call: true})
+      .into(app, 'proxyClasses');
+    var instance = new app.proxyClasses.UserProxy();
+    instance.getUser().should.eql({ name: 'xiaochen.gaoxc' });
+  });
+
   describe('into() with options.filters', function () {
     it('should only load property match the filers', function () {
       var app = {};
@@ -121,5 +143,18 @@ describe('loading.test.js', function () {
     app.services.should.have.properties('someClass', 'someDir');
     app.services.someDir.should.have.property('someSubClass');
   });
+
+  // feature detection
+  function supportEs6Class() {
+      'use strict';
+
+      if (typeof Symbol == "undefined") return false;
+      try {
+          eval("class Foo {}");
+          eval("var bar = (x) => x+1");
+      } catch (e) { return false; }
+
+      return true;
+  }
 
 });
