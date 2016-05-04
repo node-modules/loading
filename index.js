@@ -8,6 +8,7 @@
  *   fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)
  *   Janus-Z <Janus.zheng@gmail.com> (https://github.com/janus-z)
  *   popomore <sakura9515@gmail.com>
+ *   fangk <kai.fangk@gmail.com>
  */
 
 'use strict';
@@ -19,6 +20,7 @@
 var debug = require('debug')('loading');
 var getMods = require('./lib/mods');
 var inject = require('./lib/inject');
+var is = require('is-type-of');
 
 function Loader(dirpath, opt) {
   if (!(this instanceof Loader)) {
@@ -44,6 +46,11 @@ var proto = Loader.prototype;
 
 proto._load = function (target, field, options) {
   var filters = options && options.filters;
+  var initializer;
+  if (options && options.initializer && is.function(options.initializer)) {
+    // initializer only support function;
+    initializer = options.initializer;
+  }
   var mods = this._mods;
   var isCall = this.opt.call;
   var isOverride = this.opt.override;
@@ -65,6 +72,10 @@ proto._load = function (target, field, options) {
 
     var names = properties.join('.');
     var mod = require(item.fullpath);
+    // if exist initializer function, run it;
+    if (initializer) {
+      mod = initializer(mod);
+    }
     inject(target[field], properties, mod, target, isCall, isOverride);
     debug('loading #%d:%s into %s', index++, names, field);
   });
