@@ -7,6 +7,7 @@
  * Authors:
  *   fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)
  *   popomore <sakura9515@gmail.com>
+ *   fangk <kai.fangk@gmail.com>
  */
 
 'use strict';
@@ -142,6 +143,20 @@ describe('loading.test.js', function () {
     loading(fixtures, { lowercaseFirst: true }).into(app, 'services');
     app.services.should.have.properties('someClass', 'someDir');
     app.services.someDir.should.have.property('someSubClass');
+  });
+
+  it('should support options.initializer with es6 class ', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/dao');
+    loading(fixtures, { ignore: 'util/**' }).into(app, 'dao', {
+      initializer: function(exports) {
+        // return exports;
+        return new exports(app);
+      }
+    });
+    app.dao.should.have.property('TestClass', {user: { name: 'kai.fangk'}});
+    app.dao.should.have.property('testFunction', {user: { name: 'kai.fangk'}});
+    app.dao.should.have.property('testReturnFunction', {user: { name: 'kai.fangk'}});
   });
 
   // feature detection
