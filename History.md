@@ -1,4 +1,10 @@
 
+1.11.0 / 2016-05-04
+===================
+
+  * unnittest use Class, remove 0.12 travis support
+  * add options.initializer function when inject
+
 1.10.0 / 2015-11-10
 ==================
 
