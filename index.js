@@ -18,6 +18,7 @@
  */
 
 var debug = require('debug')('loading');
+var interopRequire = require('interop-require');
 var getMods = require('./lib/mods');
 var inject = require('./lib/inject');
 var is = require('is-type-of');
@@ -71,7 +72,7 @@ proto._load = function (target, field, options) {
     }
 
     var names = properties.join('.');
-    var mod = require(item.fullpath);
+    var mod = interopRequire(item.fullpath);
     // if exist initializer function, run it;
     if (initializer) {
       mod = initializer(mod);

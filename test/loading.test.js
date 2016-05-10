@@ -159,6 +159,13 @@ describe('loading.test.js', function () {
     app.dao.should.have.property('testReturnFunction', {user: { name: 'kai.fangk'}});
   });
 
+  it('should pass es6 module', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/es6_module');
+    loading(fixtures).into(app, 'model');
+    app.model.mod.should.eql({ a: 1 });
+  });
+
   // feature detection
   function supportEs6Class() {
       'use strict';
