@@ -43,25 +43,25 @@ describe('mods.test.js', function() {
     }].sort(sortFn));
   });
 
-  it('should throw when directory contains dot', function() {
-    (function() {
-      getMods(join(fixtures, 'error/dotdir'));
-    }).should.throw('dot.dir is not match /^[a-z][a-z0-9_-]*$/gi in dot.dir/a.js');
-  });
+  // it('should throw when directory contains dot', function() {
+  //   (function() {
+  //     getMods(join(fixtures, 'error/dotdir'));
+  //   }).should.throw('dot.dir is not match /^[a-z][a-z0-9_-]*$/gi in dot.dir/a.js');
+  // });
 
   it('should throw when directory starts with underscore', function() {
     (function() {
       getMods(join(fixtures, 'error/underscore-dir'));
-    }).should.throw('_underscore is not match /^[a-z][a-z0-9_-]*$/gi in _underscore/a.js');
+    }).should.throw('_underscore is not match /^[a-z][a-z\\.0-9_-]*$/gi in _underscore/a.js');
     (function() {
       getMods(join(fixtures, 'error/underscore-file-in-dir'));
-    }).should.throw('_a is not match /^[a-z][a-z0-9_-]*$/gi in dir/_a.js');
+    }).should.throw('_a is not match /^[a-z][a-z\\.0-9_-]*$/gi in dir/_a.js');
   });
 
   it('should throw when file starts with underscore', function() {
     (function() {
       getMods(join(fixtures, 'error/underscore-file'));
-    }).should.throw('_private is not match /^[a-z][a-z0-9_-]*$/gi in _private.js');
+    }).should.throw('_private is not match /^[a-z][a-z\\.0-9_-]*$/gi in _private.js');
   });
 
 });
