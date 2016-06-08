@@ -27,7 +27,7 @@ describe('loading.test.js', function () {
     loading(path.join(__dirname, 'fixtures', 'services')).into(app, 'services');
 
     app.should.have.property('services');
-    app.services.should.have.keys('dir', 'foo', 'fooBarHello', 'fooService', 'hyphenDir', 'underscoreDir', 'userProfile');
+    app.services.should.have.keys('dir', 'foo', 'fooBarHello', 'fooService', 'hyphenDir', 'underscoreDir', 'userProfile', 'dot.dir', 'dot.file');
     app.services.fooService.should.have.keys('a');
 
     done = pedding(2, done);

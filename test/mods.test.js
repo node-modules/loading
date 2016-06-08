@@ -10,7 +10,7 @@ describe('mods.test.js', function() {
   it('should get mods', function() {
     var dir = join(fixtures, 'services');
     var sortFn = function(x, y){
-      return x.fullpath < y.fullpath;
+      return x.fullpath < y.fullpath ? 1 : -1;
     };
     var mods = getMods(dir).sort(sortFn);
     mods.should.eql([{
@@ -40,9 +40,16 @@ describe('mods.test.js', function() {
     }, {
       fullpath: dir + '/userProfile.js',
       properties: ['userProfile']
+    }, {
+      fullpath: dir + '/dot.file.js',
+      properties: ['dot.file']
+    }, {
+      fullpath: dir + '/dot.dir/a.js',
+      properties: ['dot.dir', 'a']
     }].sort(sortFn));
   });
 
+  // when support dot file, this case will remove;
   // it('should throw when directory contains dot', function() {
   //   (function() {
   //     getMods(join(fixtures, 'error/dotdir'));
