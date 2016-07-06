@@ -166,6 +166,14 @@ describe('loading.test.js', function () {
     app.model.mod.should.eql({ a: 1 });
   });
 
+  it('should contain syntax error filepath', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/syntax_error');
+    (function () {
+      loading(fixtures).into(app, 'model');
+    }).should.throw(/\[loading\] load file: .*?test\/fixtures\/syntax_error\/error\.js, error: Unexpected identifier/);
+  });
+
   // feature detection
   function supportEs6Class() {
       'use strict';

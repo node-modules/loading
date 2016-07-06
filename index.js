@@ -72,7 +72,13 @@ proto._load = function (target, field, options) {
     }
 
     var names = properties.join('.');
-    var mod = interopRequire(item.fullpath);
+    var mod;
+    try {
+      mod = interopRequire(item.fullpath);
+    } catch (err) {
+      err.message = '[loading] load file: ' + item.fullpath + ', error: ' + err.message;
+      throw err;
+    }
     // if exist initializer function, run it;
     if (initializer) {
       mod = initializer(mod);
