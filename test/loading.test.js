@@ -102,7 +102,7 @@ describe('loading.test.js', function () {
       .into(app, 'proxyClasses');
     (function() {
       app.proxyClasses.UserProxy();
-    }).should.throw('Class constructors cannot be invoked without \'new\'');
+    }).should.throw(/cannot be invoked without 'new'/);
     var instance = new app.proxyClasses.UserProxy();
     instance.getUser().should.eql({ name: 'xiaochen.gaoxc' });
   });
@@ -171,7 +171,7 @@ describe('loading.test.js', function () {
     var fixtures = path.join(__dirname, './fixtures/syntax_error');
     (function () {
       loading(fixtures).into(app, 'model');
-    }).should.throw(/\[loading\] load file: .*?test\/fixtures\/syntax_error\/error\.js, error: Unexpected identifier/);
+    }).should.throw(/\[loading\] load file: .*?test\/fixtures\/syntax_error\/error\.js, error:/);
   });
 
   // feature detection
