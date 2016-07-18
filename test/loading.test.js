@@ -154,7 +154,9 @@ describe('loading.test.js', function () {
         return new exports(app);
       }
     });
-    app.dao.should.have.property('TestClass', {user: { name: 'kai.fangk'}});
+    app.dao.should.have.property('TestClass');
+    app.dao.TestClass.user.should.eql({ name: 'kai.fangk'});
+    // app.dao.should.have.property('TestClass', {user: { name: 'kai.fangk'}});
     app.dao.should.have.property('testFunction', {user: { name: 'kai.fangk'}});
     app.dao.should.have.property('testReturnFunction', {user: { name: 'kai.fangk'}});
   });
