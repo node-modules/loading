@@ -102,7 +102,7 @@ describe('loading.test.js', function () {
       .into(app, 'proxyClasses');
     (function() {
       app.proxyClasses.UserProxy();
-    }).should.throw('Class constructors cannot be invoked without \'new\'');
+    }).should.throw(/cannot be invoked without 'new'/);
     var instance = new app.proxyClasses.UserProxy();
     instance.getUser().should.eql({ name: 'xiaochen.gaoxc' });
   });
@@ -154,7 +154,9 @@ describe('loading.test.js', function () {
         return new exports(app);
       }
     });
-    app.dao.should.have.property('TestClass', {user: { name: 'kai.fangk'}});
+    app.dao.should.have.property('TestClass');
+    app.dao.TestClass.user.should.eql({ name: 'kai.fangk'});
+    // app.dao.should.have.property('TestClass', {user: { name: 'kai.fangk'}});
     app.dao.should.have.property('testFunction', {user: { name: 'kai.fangk'}});
     app.dao.should.have.property('testReturnFunction', {user: { name: 'kai.fangk'}});
   });
@@ -164,6 +166,14 @@ describe('loading.test.js', function () {
     var fixtures = path.join(__dirname, './fixtures/es6_module');
     loading(fixtures).into(app, 'model');
     app.model.mod.should.eql({ a: 1 });
+  });
+
+  it('should contain syntax error filepath', function() {
+    var app = {};
+    var fixtures = path.join(__dirname, './fixtures/syntax_error');
+    (function () {
+      loading(fixtures).into(app, 'model');
+    }).should.throw(/\[loading\] load file: .*?test\/fixtures\/syntax_error\/error\.js, error:/);
   });
 
   // feature detection
