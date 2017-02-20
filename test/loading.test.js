@@ -74,6 +74,19 @@ describe('loading.test.js', function () {
       .into(app, 'services');
   });
 
+  it('should overwrite property from loading recursively', function () {
+    var app = {
+      services: {
+        dir: {
+          abc: true
+        }
+      }
+    };
+    loading(path.join(__dirname, 'fixtures', 'services'), { override: true })
+      .concat(path.join(__dirname, 'fixtures', 'overwrite_services'))
+      .into(app, 'services');
+  });
+
   it('should overwrite property from loading using array', function() {
     var app = {};
     loading([
