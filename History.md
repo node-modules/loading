@@ -1,4 +1,9 @@
 
+1.13.1 / 2017-02-21
+===================
+
+  * fix: we should pass down isOverride parameter, when we call inject function recursively. (#31)
+
 1.13.0 / 2016-07-18
 ==================
 
