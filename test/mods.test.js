@@ -2,6 +2,7 @@
 
 require('should');
 var join = require('path').join;
+var relative = require('path').relative;
 var getMods = require('../lib/mods');
 var fixtures = join(__dirname, 'fixtures');
 
@@ -62,6 +63,16 @@ describe('mods.test.js', function() {
     (function() {
       getMods(join(fixtures, 'error/underscore-file'));
     }).should.throw('_private is not match /^[a-z][a-z0-9_-]*$/gi in _private.js');
+  });
+
+  it('should ignore support array', function() {
+    var dir = join(fixtures, 'services');
+    var ignore = ['dir/abc.js', 'foo_service.js'];
+    var mods = getMods(dir, { ignore });
+
+    mods.every(mod => {
+      return ignore.indexOf(relative(dir, mod.fullpath)) === -1;
+    }).should.eql(true);
   });
 
 });
