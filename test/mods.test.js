@@ -11,7 +11,7 @@ describe('mods.test.js', function() {
   it('should get mods', function() {
     var dir = join(fixtures, 'services');
     var sortFn = function(x, y){
-      return x.fullpath < y.fullpath;
+      return x.fullpath < y.fullpath ? 1 : -1;
     };
     var mods = getMods(dir).sort(sortFn);
     mods.should.eql([{
@@ -41,28 +41,35 @@ describe('mods.test.js', function() {
     }, {
       fullpath: dir + '/userProfile.js',
       properties: ['userProfile']
+    }, {
+      fullpath: dir + '/dot.file.js',
+      properties: ['dot.file']
+    }, {
+      fullpath: dir + '/dot.dir/a.js',
+      properties: ['dot.dir', 'a']
     }].sort(sortFn));
   });
 
-  it('should throw when directory contains dot', function() {
-    (function() {
-      getMods(join(fixtures, 'error/dotdir'));
-    }).should.throw('dot.dir is not match /^[a-z][a-z0-9_-]*$/gi in dot.dir/a.js');
-  });
+  // when support dot file, this case will remove;
+  // it('should throw when directory contains dot', function() {
+  //   (function() {
+  //     getMods(join(fixtures, 'error/dotdir'));
+  //   }).should.throw('dot.dir is not match /^[a-z][a-z0-9_-]*$/gi in dot.dir/a.js');
+  // });
 
   it('should throw when directory starts with underscore', function() {
     (function() {
       getMods(join(fixtures, 'error/underscore-dir'));
-    }).should.throw('_underscore is not match /^[a-z][a-z0-9_-]*$/gi in _underscore/a.js');
+    }).should.throw('_underscore is not match /^[a-z][a-z\\.0-9_-]*$/gi in _underscore/a.js');
     (function() {
       getMods(join(fixtures, 'error/underscore-file-in-dir'));
-    }).should.throw('_a is not match /^[a-z][a-z0-9_-]*$/gi in dir/_a.js');
+    }).should.throw('_a is not match /^[a-z][a-z\\.0-9_-]*$/gi in dir/_a.js');
   });
 
   it('should throw when file starts with underscore', function() {
     (function() {
       getMods(join(fixtures, 'error/underscore-file'));
-    }).should.throw('_private is not match /^[a-z][a-z0-9_-]*$/gi in _private.js');
+    }).should.throw('_private is not match /^[a-z][a-z\\.0-9_-]*$/gi in _private.js');
   });
 
   it('should ignore support array', function() {
