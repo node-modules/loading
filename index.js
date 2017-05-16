@@ -18,7 +18,7 @@
  */
 
 var debug = require('debug')('loading');
-var interopRequire = require('interop-require');
+var interopRequire = require('./lib/interop-require');
 var getMods = require('./lib/mods');
 var inject = require('./lib/inject');
 var is = require('is-type-of');
