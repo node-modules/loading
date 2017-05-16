@@ -158,6 +158,14 @@ describe('loading.test.js', function () {
     app.services.someDir.should.have.property('someSubClass');
   });
 
+  it('should load parent and child', function() {
+    var app = {};
+    loading(path.join(__dirname, 'fixtures', 'parent_child')).into(app, 'services');
+    app.services.should.have.keys('parent');
+    app.services.parent.parentMethod().should.equal('parentMethod');
+    app.services.parent.child.childMethod().should.equal('childMethod');
+  });
+
   it('should support options.initializer with es6 class ', function() {
     var app = {};
     var fixtures = path.join(__dirname, './fixtures/dao');
